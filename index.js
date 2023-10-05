@@ -4,25 +4,25 @@ const prisma = new PrismaClient()
 
 async function main() {
     // ... you will write your Prisma Client queries here
-    await prisma.item.create({
-        data: {
-            name: 'Hundklädsel1',
-            description: 'Klädsel för hund nr 1',
-            price: 100,
-            image: 'dog1.jpg',
-            categoryId: 0,
-        },
-    })
+    // await prisma.item.create({
+    //     data: {
+    //         name: 'Humle GoPro',
+    //         description: 'En GoPro för humlor, bin och dina andra favorit insekter',
+    //         price: 299,
+    //         oldPrice: 999,
+    //         image: 'bee1.jpg',
+    //         categoryId: 3,
+    //     },
+    // })
 
-    const allUsers = await prisma.user.findMany({
-        include: {
-            posts: true,
-            profile: true,
-        },
-    })
-    console.dir(allUsers, { depth: null })
+    // await prisma.category.create({
+    //     data: {
+    //         name: 'Annat',
+    //     },
+    // })
 
-
+    const allItems = await prisma.item.findMany({})
+    console.dir(allItems, { depth: null })
 }
 
 main()
