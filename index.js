@@ -3,17 +3,16 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-    // ... you will write your Prisma Client queries here
-    // await prisma.item.create({
-    //     data: {
-    //         name: 'Humle GoPro',
-    //         description: 'En GoPro för humlor, bin och dina andra favorit insekter',
-    //         price: 299,
-    //         oldPrice: 999,
-    //         image: 'bee1.jpg',
-    //         categoryId: 3,
-    //     },
-    // })
+    // ... categ: 1=cat, 2=dog, 3=other
+    await prisma.item.create({
+        data: {
+            name: 'Krokodil koppel',
+            description: 'Ett koppel som passar på dina större reptiler, nämnligen krokodiler och alligatorer.',
+            price: 500,
+            image: 'gator1.jpg',
+            categoryId: 3,
+        },
+    })
 
     // await prisma.category.create({
     //     data: {
@@ -21,7 +20,11 @@ async function main() {
     //     },
     // })
 
-    const allItems = await prisma.item.findMany({})
+    const allItems = await prisma.category.findMany({
+        include: {
+            items: true,
+        },
+    })
     console.dir(allItems, { depth: null })
 }
 

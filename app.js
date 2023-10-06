@@ -8,8 +8,13 @@ app.use(cors())
 
 app.get('/', async function (req, res) {
     const allItems = await prisma.item.findMany({})
+    const allCategories = await prisma.category.findMany({
+        include: {
+            items: true,
+        },
+    })
 
-    res.json({ data: allItems })
+    res.json({ data: allItems, categories: allCategories })
 })
 
 app.listen(3000)
