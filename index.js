@@ -4,15 +4,15 @@ const prisma = new PrismaClient()
 
 async function main() {
     // ... categ: 1=cat, 2=dog, 3=other
-    await prisma.item.create({
-        data: {
-            name: 'Krokodil koppel',
-            description: 'Ett koppel som passar på dina större reptiler, nämnligen krokodiler och alligatorer.',
-            price: 500,
-            image: 'gator1.jpg',
-            categoryId: 3,
-        },
-    })
+    // await prisma.item.create({
+    //     data: {
+    //         name: 'Julbelysning för älgars horn',
+    //         description: 'Lys upp din älg med riktig julglädje med dessa specialgjorda lampor för älghorn.',
+    //         price: 799,
+    //         image: 'moose1.jpg',
+    //         categoryId: 3,
+    //     },
+    // })
 
     // await prisma.category.create({
     //     data: {
