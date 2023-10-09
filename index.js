@@ -14,6 +14,15 @@ async function main() {
     //     },
     // })
 
+    // Update item
+    // await prisma.item.update({
+    //     where: { id: 20 },
+    //     data: {
+    //         name: 'Lama keps, solbrillor, bandana kombo',
+    //     }
+    // })
+
+    // Create category
     // await prisma.category.create({
     //     data: {
     //         name: 'Annat',
