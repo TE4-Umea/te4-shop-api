@@ -11,10 +11,8 @@ async function main() {
     //         price: 299,
     //         oldPrice: 499,
     //         image: 'dog1.jpg',
-    //         categoryId: 1,
-    //         animalId: 1,
-    //         inStack: 15,
-    //         size: 'big',
+    //         inStock: 15,
+    //         brandId: 1,
     //     },
     // })
 
@@ -29,14 +27,22 @@ async function main() {
     // Create category
     // await prisma.category.create({
     //     data: {
-    //         name: 'Halsband',
+    //         name: 'hund',
     //     },
     // })
 
-    // Create aminal category
-    // await prisma.animal.create({
+    // Create brand
+    // await prisma.brand.create({
     //     data: {
-    //         name: 'hund',
+    //         name: 'apple',
+    //     },
+    // })
+
+    // Create COI
+    // await prisma.categoriesOnItems.create({
+    //     data: {
+    //         categoryId: 1,
+    //         itemId: 2,
     //     },
     // })
 

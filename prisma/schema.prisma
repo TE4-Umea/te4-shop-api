@@ -29,6 +29,7 @@ model Category {
   items CategoriesOnItems[]
 }
 
+// basically you create a COI with the id of the item and the id of the category
 model CategoriesOnItems {
   item       Item     @relation(fields: [itemId], references: [id])
   itemId     Int // relation scalar field (used in the `@relation` attribute above)
