@@ -29,6 +29,13 @@ async function main() {
     //     },
     // })
 
+    // Create aminal category
+    // await prisma.animal.create({
+    //     data: {
+    //         name: 'hund',
+    //     },
+    // })
+
     const allItems = await prisma.category.findMany({
         include: {
             items: true,
