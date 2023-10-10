@@ -7,7 +7,11 @@ const prisma = new PrismaClient()
 app.use(cors())
 
 app.get('/', async function (req, res) {
-    const allItems = await prisma.item.findMany({})
+    const allItems = await prisma.item.findMany({
+        // orderBy: {
+        //     id: 'desc',
+        // },
+    })
 
     res.json({ data: allItems })
 })
@@ -26,13 +30,31 @@ app.get('/category/', async function (req, res) {
     const categ = await prisma.category.findMany({
         include: {
             items: true,
-        },
+        }
     })
     res.json({ data: categ })
 })
 
-app.get('/category/dog', async function (req, res) {
-    const dogCateg = await prisma.category.findMany({
+app.get('/category/hat', async function (req, res) {
+    const hat = await prisma.category.findMany({
+        include: {
+            items: true,
+        }
+    })
+    res.json({ data: hat })
+})
+
+app.get('/animal/', async function (req, res) {
+    const categ = await prisma.animal.findMany({
+        include: {
+            items: true,
+        }
+    })
+    res.json({ data: categ })
+})
+
+app.get('/animal/dog', async function (req, res) {
+    const dogCateg = await prisma.animal.findMany({
         where: {
             name: 'Hundprodukter',
         },
@@ -43,8 +65,8 @@ app.get('/category/dog', async function (req, res) {
     res.json({ data: dogCateg })
 })
 
-app.get('/category/cat', async function (req, res) {
-    const catCateg = await prisma.category.findMany({
+app.get('/animal/cat', async function (req, res) {
+    const catCateg = await prisma.animal.findMany({
         where: {
             name: 'Kattprodukter',
         },
@@ -55,8 +77,8 @@ app.get('/category/cat', async function (req, res) {
     res.json({ data: catCateg })
 })
 
-app.get('/category/other', async function (req, res) {
-    const otherCateg = await prisma.category.findMany({
+app.get('/animal/other', async function (req, res) {
+    const otherCateg = await prisma.animal.findMany({
         where: {
             name: 'Annat',
         },
