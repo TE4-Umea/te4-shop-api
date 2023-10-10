@@ -19,9 +19,19 @@ model Item {
   image       String?
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
+  inStack     Int?
+  size        String?
+  animal      Animal?  @relation(fields: [animalId], references: [id])
+  animalId    Int?
 }
 
 model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  items Item[]
+}
+
+model Animal {
   id    Int    @id @default(autoincrement())
   name  String
   items Item[]

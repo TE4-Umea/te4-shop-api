@@ -13,13 +13,13 @@ app.get('/', async function (req, res) {
 })
 
 app.get('/product/:id', async function (req, res) {
-    const oneItems = await prisma.item.findMany({
+    const oneItem = await prisma.item.findMany({
         where: {
             id: parseInt(req.params.id),
         },
     })
 
-    res.json({ data: oneItems })
+    res.json({ data: oneItem })
 })
 
 app.get('/category/', async function (req, res) {
