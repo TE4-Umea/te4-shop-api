@@ -6,14 +6,14 @@ async function main() {
     // ... categ: 1=cat, 2=dog, 3=other
     // await prisma.item.create({
     //     data: {
-    //         name: 'Julbelysning för älgars horn',
-    //         description: 'Lys upp din älg med riktig julglädje med dessa specialgjorda lampor för älghorn.',
-    //         price: 799,
-    //         oldPrice: 999,
-    //         image: 'moose1.jpg',
-    //         categoryId: 3,
-    //         animalId: 3,
-    //         inStack: 5,
+    //         name: 'HUnd halsband',
+    //         description: 'vanligt halsband för en större hund.',
+    //         price: 299,
+    //         oldPrice: 499,
+    //         image: 'dog1.jpg',
+    //         categoryId: 1,
+    //         animalId: 1,
+    //         inStack: 15,
     //         size: 'big',
     //     },
     // })
@@ -29,7 +29,7 @@ async function main() {
     // Create category
     // await prisma.category.create({
     //     data: {
-    //         name: 'Annat',
+    //         name: 'Halsband',
     //     },
     // })
 
@@ -40,7 +40,7 @@ async function main() {
     //     },
     // })
 
-    const allItems = await prisma.category.findMany({
+    const allItems = await prisma.animal.findMany({
         include: {
             items: true,
         },
