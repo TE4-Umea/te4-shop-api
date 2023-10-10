@@ -46,7 +46,7 @@ async function main() {
     //     },
     // })
 
-    const allItems = await prisma.animal.findMany({
+    const allItems = await prisma.item.findMany({
         include: {
             items: true,
         },
