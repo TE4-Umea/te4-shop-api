@@ -9,8 +9,12 @@ async function main() {
     //         name: 'Julbelysning för älgars horn',
     //         description: 'Lys upp din älg med riktig julglädje med dessa specialgjorda lampor för älghorn.',
     //         price: 799,
+    //         oldPrice: 999,
     //         image: 'moose1.jpg',
     //         categoryId: 3,
+    //         animalId: 3,
+    //         inStack: 5,
+    //         size: 'big',
     //     },
     // })
 
