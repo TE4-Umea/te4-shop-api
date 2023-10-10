@@ -11,27 +11,34 @@ datasource db {
 }
 
 model Item {
-  id          Int      @id @default(autoincrement())
+  id          Int                 @id @default(autoincrement())
   name        String
   description String?
   price       Float
   oldPrice    Float?
   image       String?
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  Int
-  inStack     Int?
-  size        String?
-  animal      Animal?  @relation(fields: [animalId], references: [id])
-  animalId    Int?
+  categories  CategoriesOnItems[]
+  inStock     Int?
+  brand       Brand?              @relation(fields: [brandId], references: [id])
+  brandId     Int?
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
+  id    Int                 @id @default(autoincrement())
   name  String
-  items Item[]
+  items CategoriesOnItems[]
 }
 
-model Animal {
+model CategoriesOnItems {
+  item       Item     @relation(fields: [itemId], references: [id])
+  itemId     Int // relation scalar field (used in the `@relation` attribute above)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int // relation scalar field (used in the `@relation` attribute above)
+
+  @@id([itemId, categoryId])
+}
+
+model Brand {
   id    Int    @id @default(autoincrement())
   name  String
   items Item[]
