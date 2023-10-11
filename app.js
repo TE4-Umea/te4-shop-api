@@ -11,6 +11,10 @@ app.get('/', async function (req, res) {
         // orderBy: {
         //     id: 'desc',
         // },
+        include: {
+            brand: true,
+            categories: true,
+        },
     })
 
     res.json({ data: allItems })
@@ -20,6 +24,10 @@ app.get('/product/:id', async function (req, res) {
     const oneItem = await prisma.item.findMany({
         where: {
             id: parseInt(req.params.id),
+        },
+        include: {
+            brand: true,
+            categories: true,
         },
     })
 
@@ -35,58 +43,5 @@ app.get('/category/', async function (req, res) {
     res.json({ data: categ })
 })
 
-app.get('/category/hat', async function (req, res) {
-    const hat = await prisma.category.findMany({
-        include: {
-            items: true,
-        }
-    })
-    res.json({ data: hat })
-})
-
-app.get('/animal/', async function (req, res) {
-    const categ = await prisma.animal.findMany({
-        include: {
-            items: true,
-        }
-    })
-    res.json({ data: categ })
-})
-
-app.get('/animal/dog', async function (req, res) {
-    const dogCateg = await prisma.animal.findMany({
-        where: {
-            name: 'Hundprodukter',
-        },
-        include: {
-            items: true,
-        },
-    })
-    res.json({ data: dogCateg })
-})
-
-app.get('/animal/cat', async function (req, res) {
-    const catCateg = await prisma.animal.findMany({
-        where: {
-            name: 'Kattprodukter',
-        },
-        include: {
-            items: true,
-        },
-    })
-    res.json({ data: catCateg })
-})
-
-app.get('/animal/other', async function (req, res) {
-    const otherCateg = await prisma.animal.findMany({
-        where: {
-            name: 'Annat',
-        },
-        include: {
-            items: true,
-        },
-    })
-    res.json({ data: otherCateg })
-})
 
 app.listen(3000)

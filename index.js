@@ -3,18 +3,47 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-    // ... categ: 1=cat, 2=dog, 3=other
+    // ... categ: 1=hund, 2=Katt, 3=Andra djur, 4=Halsband, 5=Regnkläder, 6=Dekorationer
     // await prisma.item.create({
     //     data: {
-    //         name: 'HUnd halsband',
-    //         description: 'vanligt halsband för en större hund.',
-    //         price: 299,
-    //         oldPrice: 499,
-    //         image: 'dog1.jpg',
-    //         inStock: 15,
-    //         brandId: 1,
+    //         name: 'Liten igelkottshatt',
+    //         description: 'En liten igelkottshatt för små igelkottar',
+    //         price: 499,
+    //         oldPrice: 799,
+    //         image: 'hedgehog1.jpg',
+    //         inStock: (Math.floor(Math.random() * 100) + 1),
+    //         brandId: 4,
+    //         categories: {
+    //             create: [
+    //                 {
+    //                     category: {
+    //                         connectOrCreate: {
+    //                             create: {
+    //                                 name: 'Andra djur',
+    //                             },
+    //                             where: {
+    //                                 name: 'Andra djur',
+    //                             },
+    //                         },
+    //                     },
+    //                 },
+    //                 {
+    //                     category: {
+    //                         connectOrCreate: {
+    //                             create: {
+    //                                 name: 'Dekorationer',
+    //                             },
+    //                             where: {
+    //                                 name: 'Dekorationer',
+    //                             },
+    //                         },
+    //                     },
+    //                 },
+    //             ],
+    //         },
     //     },
     // })
+
 
     // Update item
     // await prisma.item.update({
@@ -27,14 +56,14 @@ async function main() {
     // Create category
     // await prisma.category.create({
     //     data: {
-    //         name: 'hund',
+    //         name: 'Dekorationer',
     //     },
     // })
 
     // Create brand
     // await prisma.brand.create({
     //     data: {
-    //         name: 'apple',
+    //         name: 'Fluff&Fashion',
     //     },
     // })
 
@@ -48,7 +77,8 @@ async function main() {
 
     const allItems = await prisma.item.findMany({
         include: {
-            items: true,
+            brand: true,
+            categories: true,
         },
     })
     console.dir(allItems, { depth: null })
