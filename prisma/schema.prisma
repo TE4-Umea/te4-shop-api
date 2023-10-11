@@ -10,9 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// npx prisma migrate dev --name init
 model Item {
   id          Int                 @id @default(autoincrement())
-  name        String
+  name        String              @unique
   description String?
   price       Float
   oldPrice    Float?
@@ -25,7 +26,7 @@ model Item {
 
 model Category {
   id    Int                 @id @default(autoincrement())
-  name  String
+  name  String              @unique
   items CategoriesOnItems[]
 }
 
@@ -41,6 +42,6 @@ model CategoriesOnItems {
 
 model Brand {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String @unique
   items Item[]
 }
