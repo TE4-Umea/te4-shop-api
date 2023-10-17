@@ -16,7 +16,7 @@ app.get('/', async function (req, res) {
         // },
         include: {
             brand: true,
-            categories: true,
+            categories: { include: { category: true } }
         },
         //take: parseInt(limit),
         //skip: (parseInt(page) - 1) * parseInt(limit),
@@ -34,7 +34,7 @@ app.get('/product/:id', async function (req, res) {
         },
         include: {
             brand: true,
-            categories: true,
+            categories: { include: { category: true } },
         },
     })
 
@@ -53,7 +53,7 @@ app.get('/product/search/:value', async function (req, res) {
         },
         include: {
             brand: true,
-            categories: true,
+            categories: { include: { category: true } },
         }
     })
     res.json({ data: searchedItems })
@@ -62,8 +62,9 @@ app.get('/product/search/:value', async function (req, res) {
 app.get('/category/', async function (req, res) {
     const categ = await prisma.category.findMany({
         include: {
-            items: true,
-        }
+            // https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/working-with-many-to-many-relations
+            items: { include: { item: { include: { brand: true } } } }
+        },
     })
     res.json({ data: categ })
 })
